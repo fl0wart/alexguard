@@ -1,16 +1,13 @@
 import discord
 from discord.ext import commands
 import asyncio
-import youtube_dl
-import time
-import os
 
 bot=commands.Bot(command_prefix='ap!')
 @bot.event
 async def on_ready():
     print('Logged in as '+bot.user.name+' (ID:'+bot.user.id+') | Connected to '+str(len(bot.servers))+' servers | Connected to '+str(len(set(bot.get_all_members())))+' users')
     print('--------')
-    await Bot.change_presence(game=discord.Game(name="with portals! 🌀", type=0))
+    await Bot.change_presence(game=discord.Game(name="the portals! 🌀", type=3))
 
 bot.remove_command('help')
 
