@@ -1,23 +1,24 @@
-import asyncio
 import discord
-from discord.ext.commands import Bot
+from discord.ext import commands
+import asyncio
+import youtube_dl
+import time
+import os
 
-
-Mike = Bot('ap!')
-
-@Mike.event
+bot=commands.Bot(command_prefix='ap!')
+@bot.event
 async def on_ready():
-    print ("Starting up")
-    print ("My username is " + Mike.user.name + " and i am running with the ID: " + Mike.user.id)
-    await Mike.change_presence(game=discord.Game(name="with portals! 🌀", type=0))
-    print ("Started")
-    
-Mike.remove_command('help')
+    print('Logged in as '+bot.user.name+' (ID:'+bot.user.id+') | Connected to '+str(len(bot.servers))+' servers | Connected to '+str(len(set(bot.get_all_members())))+' users')
+    print('--------')
+    await Bot.change_presence(game=discord.Game(name="with portals! 🌀", type=0))
 
-@Mike.command(pass_context = True)
+bot.remove_command('help')
+
+@bot.command(pass_context = True)
+@commands.has_permissions(manage_messages = True)
 async def say(ctx, *args):
     mesg = ' '.join(args)
-    await Mike.delete_message(ctx.message)
-    return await Mike.say(mesg)
+    await bot.delete_message(ctx.message)
+    return await bot.say(mesg)
     
 Mike.run('NTU4NTQyODkwMzA2MTA5NDUy.D3lPpA.yBZoL0UCcBb9ilQUuDVo1XaGJoU')
