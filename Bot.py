@@ -7,12 +7,12 @@ bot=commands.Bot(command_prefix='ap!')
 async def on_ready():
     print('Logged in as '+bot.user.name+' (ID:'+bot.user.id+') | Connected to '+str(len(bot.servers))+' servers | Connected to '+str(len(set(bot.get_all_members())))+' users')
     print('--------')
-    await Bot.change_presence(game=discord.Game(name="with portals! 🌀", type=1))
+    await bot.change_presence(game=discord.Game(name="with portals! 🌀", type=0))
 
 bot.remove_command('help')
 
 @bot.command(pass_context = True)
-@commands.has_permissions(manage_messages = True)
+@commands.has_permissions(administrator = True)
 async def say(ctx, *args):
     mesg = ' '.join(args)
     await bot.delete_message(ctx.message)
