@@ -17,7 +17,7 @@ async def say(ctx, *args):
     mesg = ' '.join(args)
     await bot.delete_message(ctx.message)
     return await bot.say(mesg)
-    
+
 @bot.command(pass_context = True)
 @commands.has_permissions(administrator=True) 
 async def announce(ctx, channel: discord.Channel=None, *, msg: str):
