@@ -25,4 +25,11 @@ async def announce(ctx, channel: discord.Channel=None, *, msg: str):
     await bot.send_message(channel, embed=embed)
     await bot.delete_message(ctx.message)
     
+@bot.command(pass_context = True)
+@commands.has_permissions(administrator=True) 
+async def announce2(ctx, channel: discord.Channel=None, *, msg: str):
+    embed=discord.Embed(description="{}".format(msg),color=0x00ffff)
+    await bot.send_message(channel, embed=embed)
+    await bot.delete_message(ctx.message)
+    
 bot.run('NTU4NTQyODkwMzA2MTA5NDUy.D3lPpA.yBZoL0UCcBb9ilQUuDVo1XaGJoU')
